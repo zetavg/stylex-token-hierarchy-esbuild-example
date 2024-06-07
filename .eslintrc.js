@@ -8,11 +8,17 @@
  */
 
 module.exports = {
-  plugins: ['@stylexjs'],
+  parser: 'hermes-eslint',
+  extends: ['eslint:recommended'],
+  plugins: ['react', '@stylexjs'],
+  env: {
+    browser: true,
+    es6: true,
+    jest: true,
+    node: true,
+  },
   rules: {
     '@stylexjs/valid-styles': 'error',
-    'ft-flow/space-after-type-colon': 0,
-    'ft-flow/no-types-missing-file-annotation': 0,
-    'ft-flow/generic-spacing': 0,
   },
+  ignorePatterns: ['**/dist/*'],
 };

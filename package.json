@@ -17,7 +17,10 @@
   "devDependencies": {
     "@stylexjs/esbuild-plugin": "^0.6.1",
     "@stylexjs/eslint-plugin": "^0.6.1",
+    "babel-plugin-syntax-hermes-parser": "^0.22.0",
     "esbuild": "^0.19.12",
-    "eslint": "^8.55.0"
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.34.2",
+    "hermes-eslint": "^0.22.0"
   }
 }
