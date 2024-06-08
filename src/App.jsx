@@ -12,38 +12,48 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import * as stylex from '@stylexjs/stylex';
-import { colors } from '@stylexjs/open-props/lib/colors.stylex';
-import { sizes } from '@stylexjs/open-props/lib/sizes.stylex';
-import { fonts } from '@stylexjs/open-props/lib/fonts.stylex';
 
-const styles = stylex.create({
-  main: {
-    width: '100vw',
-    height: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.pink7,
-  },
-  card: {
-    backgroundColor: colors.blue9,
-    padding: sizes.spacing5,
-    borderRadius: sizes.spacing2,
-    justifyContent: 'center',
-    display: 'flex',
-    alignItems: 'center',
-    color: colors.gray0,
-    fontFamily: fonts.mono,
-  },
+import Button from './components/Button';
+import { colorPalette, systemColors } from './tokens.stylex';
+
+const indigoTheme = stylex.createTheme(systemColors, {
+  primary: colorPalette.indigo,
+});
+
+
+const lightColorPaletteTheme = stylex.createTheme(colorPalette, {
+  blue: '#66B0FF',
+  indigo: '#8584E1',
+  white: '#FFFFFF',
+  // ...
 });
 
 function App() {
   return (
-    <div {...stylex.props(styles.main)}>
-      <div {...stylex.props(styles.card)}>
-        <span>Blue rounded rectangle</span>
+    <>
+      <h2>Default Button</h2>
+      <Button label="Default button" />
+
+      <br /><br /><hr />
+
+      <div {...stylex.props(indigoTheme)}>
+        <h2>Button with Indigo Theme</h2>
+        <p>In this div, a theme is applied which overrides <code>systemColors.primary</code> to <code>colorPalette.indigo</code>.</p>
+        <Button label="Indigo button" />
+        <br />
+        <small>(Should be indigo!)</small>
       </div>
-    </div>
+
+      <br /><br /><hr />
+
+      <div {...stylex.props(lightColorPaletteTheme)}>
+        <h2>Button with Light Color Palette</h2>
+        <p>In this div, a theme is applied which overrides the <code>colorPalette</code>.</p>
+        <Button label="Light button" />
+        <br />
+        <small>(Should be light blue!)</small>
+      </div>
+    </>
   );
 }
 
